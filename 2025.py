@@ -26,6 +26,38 @@ reversed_binary = [b[::-1] for b in binary]
 ascii_chars = [chr(int(b, 2)) for b in reversed_binary]
 print("".join(ascii_chars))
 
+#m5
+morse_code = {
+    'A': '.-', 'B': '-...', 'C': '-.-.', 'D': '-..', 'E': '.',
+    'F': '..-.', 'G': '--.', 'H': '....', 'I': '..', 'J': '.---',
+    'K': '-.-', 'L': '.-..', 'M': '--', 'N': '-.', 'O': '---',
+    'P': '.--.', 'Q': '--.-', 'R': '.-.', 'S': '...', 'T': '-',
+    'U': '..-', 'V': '...-', 'W': '.--', 'X': '-..-', 'Y': '-.--',
+    'Z': '--..',
+    '0': '-----', '1': '.----', '2': '..---', '3': '...--',
+    '4': '....-', '5': '.....', '6': '-....', '7': '--...',
+    '8': '---..', '9': '----.'
+}
+morse = "-.. .. ....- .--. ..... -... -. --- .--. .... --.- -... -.. ..-.".split(" ")
+
+decoded = ""
+for code in morse:
+    for letter, pattern in morse_code.items():
+        if pattern == code: #looking up keys from dict morse_code
+            decoded += letter
+            break
+
+shifted = ""
+for ch in decoded:
+    if 'A' <= ch <= 'Z': #apply cipher to letters
+        shifted += chr(((ord(ch) - ord('A') - 1) % 26) + ord('A'))
+    else: #but not numbers!
+        shifted += ch
+
+print(shifted)
+
+
+
 
 
 
